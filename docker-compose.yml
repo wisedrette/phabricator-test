@@ -1,0 +1,21 @@
+version: '3.1'
+
+services:
+  web:
+    depends_on:
+      - db
+    image: redpointgames/phabricator
+    ports:
+      - 80:80
+    restart: always
+    environment:
+      - MYSQL_HOST=db
+      - MYSQL_PASS=some_password
+      - PHABRICATOR_HOST_KEYS_PATH=/tmp
+
+  db:
+    image: mysql:5.7.19
+    command: mysqld --sql-mode=STRICT_ALL_TABLES --max-allowed-packet=33554432
+    environment:
+      - MYSQL_ROOT_PASSWORD=some_password
+      - MYSQL_DATABASE=phpbb
