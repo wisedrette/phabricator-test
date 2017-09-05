@@ -12,6 +12,7 @@ services:
       - MYSQL_HOST=db
       - MYSQL_PASS=some_password
       - PHABRICATOR_HOST_KEYS_PATH=/tmp
+      - DYNDEPLOY_DOMAIN
 
   db:
     image: mysql:5.7.19

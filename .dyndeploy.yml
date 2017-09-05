@@ -1,0 +1,3 @@
+post_install:
+  web:
+    - /srv/phabricator/phabricator/bin/config set phabricator.base-uri "https://$DYNDEPLOY_DOMAIN/"
