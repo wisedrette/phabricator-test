@@ -1,3 +1,6 @@
-post_install:
-  web:
-    - /srv/phabricator/phabricator/bin/config set phabricator.base-uri "https://$DYNDEPLOY_DOMAIN/"
+post_launch:
+  - target: 'web'
+    command: exec
+    options: {target} /bin/bash -c '/srv/phabricator/phabricator/bin/config set phabricator.base-uri "https://$DYNDEPLOY_DOMAIN/"'
+wait_post_launch:
+  true
